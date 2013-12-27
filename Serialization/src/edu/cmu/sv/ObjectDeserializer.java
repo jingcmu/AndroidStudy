@@ -12,7 +12,7 @@ public class ObjectDeserializer {
 		try {
 			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(SERIALIZED_FILE_NAME));
 			Channel channel = (Channel)objectInputStream.readObject();
-			Iterator<Video> iterator= channel.getVideoClips().iterator();
+			Iterator<Video> iterator = channel.getVideoClips().iterator();
 			System.out.println("deseralized channel contain the following videos:");
 			while(iterator.hasNext()) {
 				System.out.println("-->"+((Video)iterator.next()).getName());

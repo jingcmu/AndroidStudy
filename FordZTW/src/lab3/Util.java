@@ -19,7 +19,7 @@ public class Util {
 	        		optionSets[setNum] = new OptionSet(s, 5);
 	        		for(int i=0; i<5; i++) {
 	        			s = br.readLine();
-	        			String[] st = s.split(":"); //get the name and 
+	        			String[] st = s.split(":"); //get the name and value
 	        			int price = getPrice(st[0], st[1]);
 	        			optionSets[setNum].setOption(i, st[0], price); //
 	        		}

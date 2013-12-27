@@ -1,7 +1,11 @@
 package lab3;
 
-public class OptionSet {
-	class Option {
+import java.io.Serializable;
+
+public class OptionSet implements Serializable {
+	private static final long serialVersionUID = 1L;
+	class Option implements Serializable {
+		private static final long serialVersionUID = 1L;
 		private String name;
 		private int price;
 		Option() {}
@@ -20,8 +24,7 @@ public class OptionSet {
 		}
 		public void setPrice(int price) {
 			this.price = price;
-		}
-		
+		}		
 	}
 	private String name;
 	private Option[] options;
