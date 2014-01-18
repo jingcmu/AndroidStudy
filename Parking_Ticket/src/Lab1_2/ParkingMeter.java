@@ -7,6 +7,8 @@ package Lab1_2;
 public class ParkingMeter {
 	private int purchasedMinutes;
 	
+	public ParkingMeter() {}
+	
 	public ParkingMeter(int purchasedMinutes) {
 		setPurchasedMinutes(purchasedMinutes);
 	}

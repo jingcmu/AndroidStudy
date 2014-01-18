@@ -11,6 +11,8 @@ public class ParkingTicket {
 	private PoliceOfficer officerGiveTicket;
 	private double fine;
 	
+	public ParkingTicket() {}
+	
 	public ParkingTicket(ParkedCar carGetTicket, PoliceOfficer officerGiveTicket, double fine) {
 		this.carGetTicket = carGetTicket;
 		this.officerGiveTicket = officerGiveTicket;
