@@ -1,4 +1,4 @@
-package edu.cmu.sv.java;
+package Lab1_2;
 
 /**
  * @brief simulate a parking meter
