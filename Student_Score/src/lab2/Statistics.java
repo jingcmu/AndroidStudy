@@ -1,10 +1,35 @@
 package lab2;
+// Class Statistics is used to get low/high/average scores of the students
+public class Statistics {
+	private int [] lowscores = new int [5];
+  	private int [] highscores = new int [5];
+  	private float [] avgscores = new float [5];
+  	
+  	public int[] getLowscores() {
+		return lowscores;
+	}
 
-class Statistics {
-	int [] lowscores = new int [5];
-  	int [] highscores = new int [5];
-  	float [] avgscores = new float [5];
-  	void findlow(Student [] a){
+	public void setLowscores(int[] lowscores) {
+		this.lowscores = lowscores;
+	}
+
+	public int[] getHighscores() {
+		return highscores;
+	}
+
+	public void setHighscores(int[] highscores) {
+		this.highscores = highscores;
+	}
+
+	public float[] getAvgscores() {
+		return avgscores;
+	}
+
+	public void setAvgscores(float[] avgscores) {
+		this.avgscores = avgscores;
+	}
+
+	public void findlow(Student [] a) {
       	//This method will find lowest score and store it in an array names lowscores
   		int [] scores = a[0].getScores();
   		for(int i=0; i<5; i++) {
@@ -19,8 +44,8 @@ class Statistics {
   			}
   		}
   	}
- 
-  	void findhigh(Student [] a){
+	
+  	public void findhigh(Student [] a){
   		//This method will find highest score and store it in an array names highscores
   		int [] scores = a[0].getScores();
   		for(int i=0; i<5; i++) {
@@ -36,7 +61,7 @@ class Statistics {
   		}
   	}
 
-  	void findavg(Student [] a){
+  	public void findavg(Student [] a){
   		//This method will find avg score for each quiz and store it in an array names avgscores
   		int [] scores = a[0].getScores();
   		float [] totalscores = {0, 0, 0, 0, 0};

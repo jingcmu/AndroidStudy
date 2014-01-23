@@ -1,5 +1,7 @@
 package lab2;
 
+import Lab2Util.Util;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -17,7 +19,7 @@ public class Main {
 						  "SID", "Qu1", "Qu2", "Qu3", "Qu4", "Qu5");
 		//Print the data and statistics
 		for(int i=0; i<lab2.length; i++) {
-			lab2[i].print();
+			lab2[i].printInfo();
 		}
 		System.out.println();
 		statlab2.printscores();

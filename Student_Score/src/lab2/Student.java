@@ -1,12 +1,13 @@
 package lab2;
 
-public class Student {
+abstract class  StudentAbstract
+{
 	private int SID;
 	private int scores[] = new int[5];
 	
 	//use default access modifier
-	public Student(){}
-	public Student(int SID, int[] scores){
+	public StudentAbstract(){}
+	public StudentAbstract(int SID, int[] scores){
 		this.SID = SID;
 		for(int i=0; i<5; i++){
 			this.scores[i] = scores[i];
@@ -26,13 +27,16 @@ public class Student {
 	public void setScores(int[] scores) {
 		this.scores = scores;
 	}
-	
+	public abstract void printInfo();
+}
+
+public class Student extends StudentAbstract {		
 	//add methods to print values of instance variables.
-	public void print(){
+	public void printInfo(){
 		//print formatted string
-		System.out.printf("%-14s", this.SID);
+		System.out.printf("%-14s", getSID());
 		for(int i = 0; i < 5; i++){
-			System.out.printf("%-14d", this.scores[i]);
+			System.out.printf("%-14d", getScores()[i]);
 		}
 		System.out.println();
 	}

@@ -1,9 +1,14 @@
-package lab2;
+package Lab2Util;
+
 import java.io.*;
 import java.util.*;
 
-class Util {
-	static Student [] readFile(String filename, Student [] stu){
+import CustomerException.MoreStudentsException;
+import lab2.Student;
+
+public class Util {
+	@SuppressWarnings("resource")
+	public static Student [] readFile(String filename, Student [] stu){
 		//Reads the file and builds student array.
 		String s;
 		int studentNum = 0;
@@ -16,19 +21,27 @@ class Util {
 			//to remove the header
 			br.readLine();
 			while ((s = br.readLine()) != null) {
+				//ignore blank line
+				if(s.length() == 0) {
+					continue;
+				}
+				//if students number exceeds 40, only count 40 students and throw an exception
+				if(studentNum == 40) {
+					throw new MoreStudentsException();
+				}
 				//Analyze each line using StringTokenizer Object
 				StringTokenizer st = new StringTokenizer(s);
 				int scores[] = new int[5];
 				stu[studentNum] = new Student();
-				for(int i=0; st.hasMoreTokens(); i++){
+				for(int i=0; st.hasMoreTokens(); i++) {
 					String tmp = st.nextToken();
 					int score, SID;
 					//Each token is converted from String to Integer using parseInt method
-					if(i == 0){
+					if(i == 0){ //to get Student ID in each line
 						SID = Integer.parseInt(tmp);
 						stu[studentNum].setSID(SID);
 					}
-					else {
+					else { //to get score for each course
 						score = Integer.parseInt(tmp);
 						scores[i-1] = score;
 					}
@@ -39,6 +52,9 @@ class Util {
 			}
 			fr.close();
 		} 
+		catch(MoreStudentsException e){
+			e.printProblems();
+		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
