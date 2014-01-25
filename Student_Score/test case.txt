@@ -1,4 +1,36 @@
-Test case1:  15 students
+Test case1:  1 student
+Input:------------------
+Stud Qu1 Qu2 Qu3 Qu4 Qu5 
+1234 052 007 100 078 034 
+end of Input------------
+
+Output: ----------------
+SID           Qu1           Qu2           Qu3           Qu4           Qu5           
+1234          52            7             100           78            34            
+
+High Score    52            7             100           78            34            
+Low Score     52            7             100           78            34            
+Average       52.000000     7.000000      100.000000    78.000000     34.000000     
+end of Output------------
+
+Test case2:  2 student
+Input:------------------
+Stud Qu1 Qu2 Qu3 Qu4 Qu5 
+1234 052 007 100 078 034 
+2134 090 036 090 077 030 
+end of Input------------
+
+Output: ----------------
+SID           Qu1           Qu2           Qu3           Qu4           Qu5           
+1234          52            7             100           78            34            
+2134          90            36            90            77            30            
+
+High Score    90            36            100           78            34            
+Low Score     52            7             90            77            30            
+Average       71.000000     21.500000     95.000000     77.500000     32.000000        
+end of Output------------
+
+Test case3:  15 students
 Input:------------------
 Stud Qu1 Qu2 Qu3 Qu4 Qu5 
 1234 052 007 100 078 034 
@@ -41,7 +73,7 @@ Low Score     0             7             0             32            10
 Average       46.200001     42.333332     70.466667     75.666664     49.733334     
 end of Output------------
 
-Test case2:  45 students
+Test case4:  45 students
 Input:------------------
 Stud Qu1 Qu2 Qu3 Qu4 Qu5 
 1234 052 007 100 078 034 
