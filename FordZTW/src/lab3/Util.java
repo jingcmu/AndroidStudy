@@ -21,7 +21,7 @@ public class Util {
 	        			s = br.readLine();
 	        			String[] st = s.split(":"); //get the name and value
 	        			int price = getPrice(st[0], st[1]);
-	        			optionSets[setNum].setOption(i, st[0], price); //
+	        			optionSets[setNum].setOption(i, st[0]+":"+st[1], price); //
 	        		}
 	        		setNum++;	 
 	        		s = br.readLine(); //read a blank line

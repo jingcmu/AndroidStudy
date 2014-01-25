@@ -4,12 +4,18 @@ import java.io.Serializable;
 
 public class OptionSet implements Serializable {
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Option is an inner class of OptionSet
+	 * It is used to represent an option for the car
+	 * @author Jacky
+	 *
+	 */
 	class Option implements Serializable {
 		private static final long serialVersionUID = 1L;
 		private String name;
 		private int price;
-		Option() {}
-		Option(String name, int price) {
+		public Option() {}
+		public Option(String name, int price) {
 			this.name = name;
 			this.price = price;
 		}
@@ -28,18 +34,26 @@ public class OptionSet implements Serializable {
 	}
 	private String name;
 	private Option[] options;
-	OptionSet() {}
-	OptionSet(String name) {
+	
+	/**
+	 * constructors
+	 */
+	public OptionSet() {}
+	public OptionSet(String name) {
 		this.name = name;
 		options = null;
 	}
-	OptionSet(String name, int count) {
+	public OptionSet(String name, int count) {
 		this.name = name;
 		options = new Option[count];
 		for(int i=0; i<options.length; i++) {
 			options[i] = new Option();
 		}
 	}
+	/**
+	 * getter and setter
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
@@ -52,6 +66,12 @@ public class OptionSet implements Serializable {
 	public void setOptions(Option[] options) {
 		this.options = options;
 	}
+	/**
+	 * sets the ith Option to the specified name and price
+	 * @param i - the ith option
+	 * @param name - the name of the option
+	 * @param price - the price of the option
+	 */
 	public void setOption(int i, String name, int price) {
 		options[i].setName(name);
 		options[i].setPrice(price);
@@ -63,6 +83,11 @@ public class OptionSet implements Serializable {
 		}
 		return null;
 	}
+	/**
+	 * eturns the price of the Option based on the name
+	 * @param name
+	 * @return
+	 */
 	public int getOptionPrice(String name) {
 		int index = findOption(name);
 		if(index != -1) {
@@ -70,6 +95,11 @@ public class OptionSet implements Serializable {
 		}
 		return -1;
 	}
+	/**
+	 * eturns the index of the Option based on the name
+	 * @param name
+	 * @return
+	 */
 	private int findOption(String name) {
 		for(int i=0; i<options.length; i++) {
 			if(options[i].getName().equals(name))

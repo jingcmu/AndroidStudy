@@ -1,0 +1,68 @@
+The input is from OptionSet.txt, there are 24 different optionsets with the name OptionSetXX.
+It is easy to choose any optionset to test.
+
+These are what I chose to test.
+Four test cases:
+
+OptionSet4
+Color:Twilight Blue CLearcoat Metallic
+Transmission:automatic
+Brakes:standard
+SideAirBag:selected
+Moonroof:selected
+
+OptionSet7
+Color:Fort Knox Gold Clearcoat Metallic
+Transmission:automatic
+Brakes:ABS
+SideAirBag:selected
+Moonroof:none
+
+OptionSet13
+Color:CD Sliver Clearcoat Metallic
+Transmission:manual
+Brakes:standard
+SideAirBag:none
+Moonroof:none
+
+OptionSet23
+Color:Sangria Red Clearcoat Metallic
+Transmission:manual
+Brakes:ABSAT
+SideAirBag:selected
+Moonroof:none
+
+Output:
+--------------------------------------------
+After deserialization, we get the info below:
+The options of Jacky's car are:
+Color:Twilight Blue CLearcoat Metallic
+Transmission:automatic
+Brakes:standard
+SideAirBag:selected
+Moonroof:selected
+The price is $18440
+
+The options of Amy's car are:
+Color:Fort Knox Gold Clearcoat Metallic
+Transmission:automatic
+Brakes:ABS
+SideAirBag:selected
+Moonroof:none
+The price is $18440
+
+The options of Kam's car are:
+Color:CD Sliver Clearcoat Metallic
+Transmission:manual
+Brakes:standard
+SideAirBag:none
+Moonroof:none
+The price is $18440
+
+The options of Oliviar's car are:
+Color:Sangria Red Clearcoat Metallic
+Transmission:manual
+Brakes:ABSAT
+SideAirBag:selected
+Moonroof:none
+The price is $18440
