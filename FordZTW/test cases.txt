@@ -1,68 +1,65 @@
-The input is from OptionSet.txt, there are 24 different optionsets with the name OptionSetXX.
-It is easy to choose any optionset to test.
+The input is from OptionSet0.txt, OptionSet1.txt, OptionSet2.txt, there are 24 different optionsets with the name OptionSetXX.
 
-These are what I chose to test.
-Four test cases:
+The output is like below:
 
-OptionSet4
-Color:Twilight Blue CLearcoat Metallic
-Transmission:automatic
-Brakes:standard
-SideAirBag:selected
-Moonroof:selected
+The model FordZTW0 includes 8 optionSets:
+OptionSet1's price is 18445
+OptionSet2's price is 19040
+OptionSet3's price is 18795
+OptionSet4's price is 19390
+OptionSet5's price is 18845
+OptionSet6's price is 19440
+OptionSet7's price is 19195
+OptionSet8's price is 19790
 
-OptionSet7
-Color:Fort Knox Gold Clearcoat Metallic
-Transmission:automatic
-Brakes:ABS
-SideAirBag:selected
-Moonroof:none
+The model FordZTW1 includes 8 optionSets:
+OptionSet9's price is 20070
+OptionSet10's price is 20665
+OptionSet11's price is 20420
+OptionSet12's price is 21015
+OptionSet13's price is 17630
+OptionSet14's price is 18225
+OptionSet15's price is 17980
+OptionSet16's price is 18575
 
-OptionSet13
-Color:CD Sliver Clearcoat Metallic
-Transmission:manual
-Brakes:standard
-SideAirBag:none
-Moonroof:none
+The model FordZTW2 includes 8 optionSets:
+OptionSet17's price is 18030
+OptionSet18's price is 18625
+OptionSet19's price is 18380
+OptionSet20's price is 18975
+OptionSet21's price is 19255
+OptionSet22's price is 19850
+OptionSet23's price is 19605
+OptionSet24's price is 20200
 
-OptionSet23
-Color:Sangria Red Clearcoat Metallic
-Transmission:manual
-Brakes:ABSAT
-SideAirBag:selected
-Moonroof:none
-
-Output:
---------------------------------------------
 After deserialization, we get the info below:
-The options of Jacky's car are:
-Color:Twilight Blue CLearcoat Metallic
-Transmission:automatic
-Brakes:standard
-SideAirBag:selected
-Moonroof:selected
-The price is $18440
+The model FordZTW0 includes 8 optionSets:
+OptionSet1's price is 18445
+OptionSet2's price is 19040
+OptionSet3's price is 18795
+OptionSet4's price is 19390
+OptionSet5's price is 18845
+OptionSet6's price is 19440
+OptionSet7's price is 19195
+OptionSet8's price is 19790
 
-The options of Amy's car are:
-Color:Fort Knox Gold Clearcoat Metallic
-Transmission:automatic
-Brakes:ABS
-SideAirBag:selected
-Moonroof:none
-The price is $18440
+The model FordZTW1 includes 8 optionSets:
+OptionSet9's price is 20070
+OptionSet10's price is 20665
+OptionSet11's price is 20420
+OptionSet12's price is 21015
+OptionSet13's price is 17630
+OptionSet14's price is 18225
+OptionSet15's price is 17980
+OptionSet16's price is 18575
 
-The options of Kam's car are:
-Color:CD Sliver Clearcoat Metallic
-Transmission:manual
-Brakes:standard
-SideAirBag:none
-Moonroof:none
-The price is $18440
+The model FordZTW2 includes 8 optionSets:
+OptionSet17's price is 18030
+OptionSet18's price is 18625
+OptionSet19's price is 18380
+OptionSet20's price is 18975
+OptionSet21's price is 19255
+OptionSet22's price is 19850
+OptionSet23's price is 19605
+OptionSet24's price is 20200
 
-The options of Oliviar's car are:
-Color:Sangria Red Clearcoat Metallic
-Transmission:manual
-Brakes:ABSAT
-SideAirBag:selected
-Moonroof:none
-The price is $18440

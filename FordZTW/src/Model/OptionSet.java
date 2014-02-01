@@ -1,7 +1,8 @@
-package lab3;
+package Model;
 
 import java.io.Serializable;
 
+/*implement Serializable interface*/
 public class OptionSet implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/**
@@ -14,11 +15,18 @@ public class OptionSet implements Serializable {
 		private static final long serialVersionUID = 1L;
 		private String name;
 		private int price;
+		
 		public Option() {}
+		
+		public Option(String name) {
+			this.name = name;
+		}
+		
 		public Option(String name, int price) {
 			this.name = name;
 			this.price = price;
 		}
+		
 		public String getName() {
 			return name;
 		}
@@ -32,8 +40,10 @@ public class OptionSet implements Serializable {
 			this.price = price;
 		}		
 	}
+	//properties of OptionSet
 	private String name;
 	private Option[] options;
+	private Integer optionSize;
 	
 	/**
 	 * constructors
@@ -43,15 +53,16 @@ public class OptionSet implements Serializable {
 		this.name = name;
 		options = null;
 	}
-	public OptionSet(String name, int count) {
+	public OptionSet(String name, int optionSize) {
 		this.name = name;
-		options = new Option[count];
-		for(int i=0; i<options.length; i++) {
+		options = new Option[optionSize];
+		this.optionSize = optionSize;
+		for(int i=0; i<optionSize; i++) {
 			options[i] = new Option();
 		}
 	}
 	/**
-	 * getter and setter
+	 * getter and setter of OptionSet
 	 * @return
 	 */
 	public String getName() {
@@ -59,6 +70,12 @@ public class OptionSet implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Integer getOptionSize() {
+		return this.optionSize;
+	}
+	public void setOptionSize(Integer optionSize) {
+		this.optionSize = optionSize;
 	}
 	public Option[] getOptions() {
 		return options;
@@ -76,6 +93,15 @@ public class OptionSet implements Serializable {
 		options[i].setName(name);
 		options[i].setPrice(price);
 	}
+	
+	public void setOption(Option option) {
+		for(int i=0; i<options.length; i++) {
+			if(options[i].getName().equals(option.getName())) {
+				options[i].setPrice(option.getPrice());
+			}
+		}
+	}
+	
 	public Option getOption(String name) {
 		int index = findOption(name);
 		if(index != -1) {

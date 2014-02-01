@@ -31,7 +31,7 @@ public class Statistics {
 
 	public void findlow(Student [] a) {
       	//This method will find lowest score and store it in an array names lowscores
-  		int [] scores = a[0].getScores();
+		Integer [] scores = a[0].getScores();
   		for(int i=0; i<5; i++) {
   			lowscores[i] = scores[i];
   		}
@@ -47,7 +47,7 @@ public class Statistics {
 	
   	public void findhigh(Student [] a){
   		//This method will find highest score and store it in an array names highscores
-  		int [] scores = a[0].getScores();
+  		Integer [] scores = a[0].getScores();
   		for(int i=0; i<5; i++) {
   			highscores[i] = scores[i];
   		}
@@ -63,7 +63,7 @@ public class Statistics {
 
   	public void findavg(Student [] a){
   		//This method will find avg score for each quiz and store it in an array names avgscores
-  		int [] scores = a[0].getScores();
+  		Integer [] scores = a[0].getScores();
   		float [] totalscores = {0, 0, 0, 0, 0};
   		for(int i=0; i<a.length; i++) {
   			scores = a[i].getScores();

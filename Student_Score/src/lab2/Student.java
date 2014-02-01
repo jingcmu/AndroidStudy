@@ -2,8 +2,8 @@ package lab2;
 
 abstract class  StudentAbstract
 {
-	private int SID;
-	private int scores[] = new int[5];
+	private Integer SID;
+	private Integer scores[] = new Integer[5];
 	
 	//use default access modifier
 	public StudentAbstract(){}
@@ -15,16 +15,16 @@ abstract class  StudentAbstract
 	}
 	
 	//write public get and set methods for SID and scores
-	public int getSID() {
+	public Integer getSID() {
 		return SID;
 	}
 	public void setSID(int sID) {
 		SID = sID;
 	}
-	public int[] getScores() {
+	public Integer[] getScores() {
 		return scores;
 	}
-	public void setScores(int[] scores) {
+	public void setScores(Integer[] scores) {
 		this.scores = scores;
 	}
 	public abstract void printInfo();

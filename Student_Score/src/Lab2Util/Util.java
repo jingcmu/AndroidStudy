@@ -31,7 +31,7 @@ public class Util {
 				}
 				//Analyze each line using StringTokenizer Object
 				StringTokenizer st = new StringTokenizer(s);
-				int scores[] = new int[5];
+				Integer[] scores = new Integer[5];
 				stu[studentNum] = new Student();
 				for(int i=0; st.hasMoreTokens(); i++) {
 					String tmp = st.nextToken();

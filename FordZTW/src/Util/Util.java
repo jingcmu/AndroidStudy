@@ -1,11 +1,15 @@
-package lab3;
+package Util;
 
 import java.io.*;
 
+import Model.Automobile;
+import Model.OptionSet;
+
 public class Util {
-	static OptionSet [] readFile(String filename){
+	public Automobile buildAutoObject(String filename){
         //Reads the file and builds OptionSet array.
         String s;
+        Automobile auto = new Automobile();
         OptionSet [] optionSets = new OptionSet[24];
         int setNum = 0;
         //Open the file using FileReader Object.
@@ -21,7 +25,7 @@ public class Util {
 	        			s = br.readLine();
 	        			String[] st = s.split(":"); //get the name and value
 	        			int price = getPrice(st[0], st[1]);
-	        			optionSets[setNum].setOption(i, st[0]+":"+st[1], price); //
+	        			optionSets[setNum].setOption(i, st[0], price); //+":"+st[1]
 	        		}
 	        		setNum++;	 
 	        		s = br.readLine(); //read a blank line
@@ -30,11 +34,13 @@ public class Util {
         }
         catch(Exception e){
             e.printStackTrace();
-        }
-        return optionSets;
+        }        
+        auto.setOptionSet(optionSets);    
+        auto.setOptionSetSize(setNum); //set real optionset size
+        return auto;
 	}
 	
-	private static int getPrice(String optionName, String choice) {
+	public int getPrice(String optionName, String choice) {
 		if(choice.equals("selected")) {
 			if(optionName.equals("Moonroof"))
 				return 595;
