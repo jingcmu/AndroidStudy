@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import CustomerException.OptionSetIndexException;
 
@@ -8,7 +9,7 @@ public class Automobile implements Serializable {
 	private static final long serialVersionUID = 1L;	
 	private String name;
 	private Integer basePrice;
-	private OptionSet[] optionSet; //this model has several OptionSets
+	private ArrayList<OptionSet> optionSet; //this model has several OptionSets
 	private Integer optionSetSize;
 	/*
 	 * constructors
@@ -40,16 +41,16 @@ public class Automobile implements Serializable {
 			}
 		} catch(OptionSetIndexException e) {
 			e.printProblems();
-			index = this.optionSet.length - 1;
+			index = this.optionSet.size() - 1;
 		}
-		return optionSet[index];
+		return optionSet.get(index);
 	}
 	
 	//finders
 	public OptionSet findOptionSet(String OptionSetName) {
 		for(int i=0; i<optionSetSize; i++) {
-			if(this.optionSet[i].getName().equals(OptionSetName)) {
-				return optionSet[i];
+			if(this.optionSet.get(i).getName().equals(OptionSetName)) {
+				return optionSet.get(i);
 			}
 		}
 		return null;
@@ -57,13 +58,8 @@ public class Automobile implements Serializable {
 	
 	public OptionSet.Option findOption(String OptionSetName, String OptionName) {
 		OptionSet optionset = findOptionSet(OptionSetName);
-		OptionSet.Option [] options = optionset.getOptions(); //inner class
-		for(int i=0; i<options.length; i++) {
-			if(options[i].getName().equals(OptionName)) {
-				return options[i];
-			}
-		}
-		return null;
+		OptionSet.Option option = optionset.getOptions(OptionName); //inner class
+		return option;
 	}
 	
 	//setters
@@ -77,63 +73,51 @@ public class Automobile implements Serializable {
 	
 	public void setOptionSetSize(int optionSetSize) {
 		this.optionSetSize = optionSetSize;
-	}
-	
-	public void setOptionSet(OptionSet[] optionSets) {
-		this.setOptionSetSize(optionSets.length);
-		this.optionSet = new OptionSet[optionSetSize];
+		this.optionSet = new ArrayList<OptionSet>(optionSetSize);
 		for(int i=0; i<optionSetSize; i++) {
-			this.optionSet[i] = new OptionSet();
-			this.optionSet[i] = optionSets[i];
+			OptionSet os = new OptionSet();
+			this.optionSet.add(os);
 		}
-		/*
-		for(int i=0; i<optionSetSize; i++) {
-			if(this.optionSet[i] == null) {
-				this.optionSet[i] = new OptionSet();
-			}
-			
-		}*/
 	}
 	
-	public void setOption(String OptionSetName, OptionSet.Option option) {
+	public void setOptionSet(String name, Integer index) {
+		OptionSet optionset = this.getOptionSet(index);
+		optionset.setName(name);
+	}
+	
+	public void setOption(String OptionSetName, String optionName, Integer price) {
 		OptionSet optionset = findOptionSet(OptionSetName);
-		optionset.setOption(option);
+		optionset.setOption(optionName, price);
 	}
 	
 	//delete
 	public void deleteOptionSet(String OptionSetName) {
 		int index = -1;
 		for(int i=0; i<optionSetSize; i++) {
-			if(this.optionSet[i].getName().equals(OptionSetName)) {
+			if(this.optionSet.get(i).getName().equals(OptionSetName)) {
 				index = i;
 			}
 		}
 		if(index != -1) {
-			for(int i=index; i<this.optionSet.length; i++) {
-				this.optionSet[i] = this.optionSet[i+1];
+			for(int i=index; i<this.optionSet.size(); i++) {
+				this.optionSet.set(i, this.optionSet.get(i+1));
 			}
 			optionSetSize = optionSetSize - 1;
 		}
 	}
 	
 	public void deleteOption(String OptionSetName, String OptionName) {
-		int index = -1, optionIndex = -1;
-		for(int i=0; i<optionSetSize; i++) {
-			if(this.optionSet[i].getName().equals(OptionSetName)) {
-				index = i;
+		OptionSet optionSet = null;
+		OptionSet.Option option = null;
+		for(int i=0; i<this.getoptionSetSize(); i++) {
+			if(this.optionSet.get(i).getName().equals(OptionSetName)) {
+				optionSet = this.optionSet.get(i);
 			}
 		}
-		if(index != -1) {
-			for(int i=0; i<this.optionSet[index].getOptionSize(); i++) {
-				if(this.optionSet[index].getOptions()[i].equals(OptionName)) {
-					optionIndex = i;
-				}
-			}
-			if(optionIndex != -1) {
-				for(int i=optionIndex; i<this.optionSet[index].getOptionSize(); i++) {
-					this.optionSet[index].getOptions()[i] = this.optionSet[index].getOptions()[i+1];
-				}
-				this.optionSet[index].setOptionSize(this.optionSet[index].getOptionSize()-1);
+		if(optionSet != null) {
+			for(int i=0; i<optionSet.getOptionSize(); i++) {
+				option = optionSet.getOption(OptionName);
+				this.optionSet.remove(option);
 			}
 		}
 	}
@@ -145,7 +129,7 @@ public class Automobile implements Serializable {
 				throw new OptionSetIndexException();
 			}
 			else {
-				this.optionSet[index] = optionset;
+				this.optionSet.set(index, optionset);
 			}
 		} catch(OptionSetIndexException e) {
 			e.printProblems();
@@ -154,38 +138,21 @@ public class Automobile implements Serializable {
 		
 	public void updateOption(OptionSet.Option option, int optionSetIndex) {
 		OptionSet optionset;
+		OptionSet.Option optionT;
 		try {
 			if(optionSetIndex >= optionSetSize) {
 				throw new OptionSetIndexException();
 			}
 			else {
-				optionset = this.optionSet[optionSetIndex];
-				for(int i=0; i<optionset.getOptionSize(); i++) {
-					if(optionset.getOptions()[i].getName().equals(option.getName())) {
-						optionset.getOptions()[i] = option;
-					}
-				}
+				optionset = this.optionSet.get(optionSetIndex);
+				optionT = optionset.getOption(option.getName());
+				optionset.setOption(optionT.getName(), optionT.getPrice());
 			}
 		} catch(OptionSetIndexException e) {
 			e.printProblems();
 		}
 	}
 	
-	/**
-	 * calculate the price of the optionSet index
-	 * @return
-	 */
-	public int getPrice(int index) {
-		int additionalPrice = 0;
-		//there are at most 5 different options in its optionset
-		additionalPrice += optionSet[index].getOptionPrice("Color");
-		additionalPrice += optionSet[index].getOptionPrice("Transmission");
-		additionalPrice += optionSet[index].getOptionPrice("Brakes");
-		additionalPrice += optionSet[index].getOptionPrice("SideAirBag");
-		additionalPrice += optionSet[index].getOptionPrice("Moonroof");
-		int price = this.getBasePrice() + additionalPrice;
-		return price;
-	}	
 	
 	//print method
 	public void print() {
@@ -194,15 +161,8 @@ public class Automobile implements Serializable {
 		str.append(this.getName());
 		str.append(" includes ");
 		str.append(this.getoptionSetSize());
-		str.append(" optionSets:");
+		str.append(" optionSets!");
 		System.out.println(str);
-		str.setLength(0);
-		for(int i=0; i<this.getoptionSetSize(); i++) {
-			str.append(this.getOptionSet(i).getName());
-			str.append("'s price is ").append(this.getPrice(i));		
-			System.out.println(str);
-			str.setLength(0);
-		}
 	}
 		
 }

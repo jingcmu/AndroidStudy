@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /*implement Serializable interface*/
 public class OptionSet implements Serializable {
@@ -16,72 +17,75 @@ public class OptionSet implements Serializable {
 		private String name;
 		private int price;
 		
-		public Option() {}
+		protected Option() {}
 		
-		public Option(String name) {
+		protected Option(String name) {
 			this.name = name;
 		}
 		
-		public Option(String name, int price) {
+		protected Option(String name, int price) {
 			this.name = name;
 			this.price = price;
 		}
 		
-		public String getName() {
+		protected String getName() {
 			return name;
 		}
-		public void setName(String name) {
+		protected void setName(String name) {
 			this.name = name;
 		}
-		public int getPrice() {
+		protected int getPrice() {
 			return price;
 		}
-		public void setPrice(int price) {
+		protected void setPrice(int price) {
 			this.price = price;
 		}		
-	}
+	}  //end of option
+	
 	//properties of OptionSet
 	private String name;
-	private Option[] options;
+	private ArrayList<Option> options;
 	private Integer optionSize;
 	
 	/**
 	 * constructors
 	 */
-	public OptionSet() {}
-	public OptionSet(String name) {
-		this.name = name;
-		options = null;
+	protected OptionSet() {
+		options = new ArrayList<Option>();
 	}
-	public OptionSet(String name, int optionSize) {
+	protected OptionSet(String name) {
 		this.name = name;
-		options = new Option[optionSize];
-		this.optionSize = optionSize;
-		for(int i=0; i<optionSize; i++) {
-			options[i] = new Option();
-		}
+		options = new ArrayList<Option>();
 	}
+	
 	/**
 	 * getter and setter of OptionSet
 	 * @return
 	 */
-	public String getName() {
+	protected String getName() {
 		return name;
 	}
-	public void setName(String name) {
+	protected void setName(String name) {
 		this.name = name;
 	}
-	public Integer getOptionSize() {
+	protected Integer getOptionSize() {
 		return this.optionSize;
 	}
-	public void setOptionSize(Integer optionSize) {
+	protected void setOptionSize(Integer optionSize) {
 		this.optionSize = optionSize;
 	}
-	public Option[] getOptions() {
-		return options;
+	protected Option getOptions(String optionName) {
+		int index = -1;
+		for(int i=0; i<this.options.size(); i++) {
+			if(this.options.get(i).getName().equals(name)) {
+				index = i;
+				break;
+			}
+		}
+		return index == -1? null:options.get(index);
 	}
-	public void setOptions(Option[] options) {
-		this.options = options;
+	protected void setOptions(Integer index, Option options) {
+		this.options.set(index, options);
 	}
 	/**
 	 * sets the ith Option to the specified name and price
@@ -89,23 +93,32 @@ public class OptionSet implements Serializable {
 	 * @param name - the name of the option
 	 * @param price - the price of the option
 	 */
-	public void setOption(int i, String name, int price) {
-		options[i].setName(name);
-		options[i].setPrice(price);
-	}
+	protected void setOption(String name, int price) {
+		boolean found = false;
+		int index = -1;
 	
-	public void setOption(Option option) {
-		for(int i=0; i<options.length; i++) {
-			if(options[i].getName().equals(option.getName())) {
-				options[i].setPrice(option.getPrice());
+		for(int i=0; i<this.options.size(); i++) {
+			if(this.options.get(i).getName().equals(name)) {
+				found = true;
+				index = i;
+				break;
 			}
+		}
+		//if found, just change the price;
+		//if not found, add the node into the ArrayList
+		if(found) {
+			Option o = this.options.get(index);
+			o.setPrice(price);
+		} else {
+			Option o = new Option(name, price);
+			this.options.add(o);
 		}
 	}
 	
-	public Option getOption(String name) {
+	protected Option getOption(String name) {
 		int index = findOption(name);
 		if(index != -1) {
-			return options[index];
+			return options.get(index);
 		}
 		return null;
 	}
@@ -114,10 +127,10 @@ public class OptionSet implements Serializable {
 	 * @param name
 	 * @return
 	 */
-	public int getOptionPrice(String name) {
+	protected int getOptionPrice(String name) {
 		int index = findOption(name);
 		if(index != -1) {
-			return options[index].getPrice();
+			return options.get(index).getPrice();
 		}
 		return -1;
 	}
@@ -126,9 +139,9 @@ public class OptionSet implements Serializable {
 	 * @param name
 	 * @return
 	 */
-	private int findOption(String name) {
-		for(int i=0; i<options.length; i++) {
-			if(options[i].getName().equals(name))
+	protected int findOption(String name) {
+		for(int i=0; i<options.size(); i++) {
+			if(options.get(i).getName().equals(name))
 				return i;
 		}
 		return -1;
