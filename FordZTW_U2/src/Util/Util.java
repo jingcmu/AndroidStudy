@@ -4,7 +4,6 @@ import java.io.*;
 
 import CustomerException.OptionFileFormatException;
 import CustomerException.OptionPriceException;
-import CustomerException.OptionSetIndexException;
 import Model.Automobile;
 
 public class Util {
@@ -22,7 +21,8 @@ public class Util {
         	File optionFile = new File(filename);
     		//In a loop read a line using readLine method.
             FileReader fr = new FileReader(optionFile);
-            BufferedReader br = new BufferedReader(fr);
+            @SuppressWarnings("resource")
+			BufferedReader br = new BufferedReader(fr);
             br.readLine();
             s = br.readLine();
             auto.setMake(s);
