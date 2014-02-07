@@ -12,8 +12,11 @@ public abstract class proxyAutomobile {
 	public void BuildAuto(String filename) {
 		Util util = new Util();
 		Automobile a1 = util.buildAutoObject(filename);
-		if(!models.containsKey(a1.getName())) {
-			models.put(a1.getName(), a1);
+		if(models == null) {
+			models = new LinkedHashMap<String, Automobile>();
+		}
+		if(!models.containsKey(a1.getModel())) {
+			models.put(a1.getModel(), a1);
 		}
 	}
 	public void printAuto(String Modelname){

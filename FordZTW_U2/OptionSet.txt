@@ -1,5 +1,7 @@
+Make Name:
+Ford
 Model Name:
-FordZTW 
+FordZTW
 Base price:
 18445
 5

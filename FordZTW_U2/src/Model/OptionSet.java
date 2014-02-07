@@ -40,6 +40,10 @@ public class OptionSet implements Serializable {
 		protected void setPrice(Float price) {
 			this.price = price;
 		}		
+		
+		protected String print() {
+			return this.getName() + " price:" + this.getPrice() + "\n";
+		}		
 	}  //end of option
 	
 	//properties of OptionSet
@@ -69,6 +73,7 @@ public class OptionSet implements Serializable {
 		this.name = name;
 	}
 	protected Integer getOptionSize() {
+		this.optionSize = this.options.size();
 		return this.optionSize;
 	}
 	protected void setOptionSize(Integer optionSize) {
@@ -118,6 +123,13 @@ public class OptionSet implements Serializable {
 		}
 	}
 	
+	protected Option getOption(int index) {
+		if(index >= 0 && index < this.getOptionSize()) {
+			return options.get(index);
+		}
+		return null;
+	}
+	
 	protected Option getOption(String name) {
 		int index = findOption(name);
 		if(index != -1) {
@@ -148,5 +160,13 @@ public class OptionSet implements Serializable {
 				return i;
 		}
 		return -1;
+	}
+	
+	protected String print() {
+		String str = "";
+		for(int i=0; i<this.getOptionSize(); i++) {
+			str += this.options.get(i).print();
+		}
+		return str;
 	}
 }

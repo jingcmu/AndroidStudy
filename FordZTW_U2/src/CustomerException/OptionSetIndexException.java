@@ -5,7 +5,10 @@ public class OptionSetIndexException extends Exception{
 	public OptionSetIndexException() {
 		super();
 	}
-	public void printProblems()  {
-		System.out.println("OptionSet Index exceeds its lenth!");
+	public void printSetIndexError()  {
+		System.out.println("Index exceeds its lenth!");
+	}
+	public void printError3()  {
+		System.out.println("Index exceeds its lenth!");
 	}
 }
