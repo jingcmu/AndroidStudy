@@ -16,6 +16,12 @@ public class Util {
         try {
                 FileReader fr = new FileReader(optionFile);
                 BufferedReader br = new BufferedReader(fr);
+                br.readLine();
+                s = br.readLine();
+                auto.setName(s);
+                br.readLine();
+                s = br.readLine();
+                auto.setBasePrice(Integer.parseInt(s));
                 s = br.readLine(); //size of the optionSet
                 auto.setOptionSetSize(Integer.parseInt(s)); //set optionSet size
                 while ((s = br.readLine()) != null) {

@@ -18,8 +18,6 @@ public class simulator {
 		Util util = new Util();
 		Automobile auto = new Automobile();
 		auto = util.buildAutoObject("OptionSet.txt");
-		auto.setName("FordZTW0");
-		auto.setBasePrice(18445);
 		try{
 			//serialize Autos
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(SERIALIZED_FILE_NAME)));

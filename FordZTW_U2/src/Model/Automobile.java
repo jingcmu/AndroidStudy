@@ -29,7 +29,12 @@ public class Automobile implements Serializable {
 		return this.basePrice;
 	}
 	
+	/**
+	 * update optionSetSize and return
+	 * @return optionSetSize
+	 */
 	public Integer getoptionSetSize(){
+		this.optionSetSize = this.optionSet.size();
 		return this.optionSetSize;
 	}
 	
@@ -85,7 +90,19 @@ public class Automobile implements Serializable {
 		optionset.setName(name);
 	}
 	
-	public void setOption(String OptionSetName, String optionName, Integer price) {
+	public void setOptionSet(String name, String newName) {
+		int index = -1;
+		for(int i=0; i<this.getoptionSetSize(); i++) {
+			if(this.optionSet.get(i).equals(name)) {
+				index = i;
+				break;
+			}
+		}
+		if(index != -1)
+			setOptionSet(newName, index);
+	}
+	
+	public void setOption(String OptionSetName, String optionName, float price) {
 		OptionSet optionset = findOptionSet(OptionSetName);
 		optionset.setOption(optionName, price);
 	}
@@ -163,6 +180,15 @@ public class Automobile implements Serializable {
 		str.append(this.getoptionSetSize());
 		str.append(" optionSets!");
 		System.out.println(str);
+		str.setLength(0);
+		for(int i=0; i<this.getoptionSetSize(); i++) {
+			OptionSet os = this.getOptionSet(i);
+			str.append(os.getName());
+			str.append(":");
+			str.append(os.getOptions().toString());
+			System.out.println(str);
+			str.setLength(0);
+		}
 	}
 		
 }

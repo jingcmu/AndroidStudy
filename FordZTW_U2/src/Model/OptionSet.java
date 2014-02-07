@@ -15,7 +15,7 @@ public class OptionSet implements Serializable {
 	class Option implements Serializable {
 		private static final long serialVersionUID = 1L;
 		private String name;
-		private int price;
+		private Float price;
 		
 		protected Option() {}
 		
@@ -23,7 +23,7 @@ public class OptionSet implements Serializable {
 			this.name = name;
 		}
 		
-		protected Option(String name, int price) {
+		protected Option(String name, Float price) {
 			this.name = name;
 			this.price = price;
 		}
@@ -34,10 +34,10 @@ public class OptionSet implements Serializable {
 		protected void setName(String name) {
 			this.name = name;
 		}
-		protected int getPrice() {
+		protected Float getPrice() {
 			return price;
 		}
-		protected void setPrice(int price) {
+		protected void setPrice(Float price) {
 			this.price = price;
 		}		
 	}  //end of option
@@ -74,6 +74,9 @@ public class OptionSet implements Serializable {
 	protected void setOptionSize(Integer optionSize) {
 		this.optionSize = optionSize;
 	}
+	protected ArrayList<Option> getOptions() {
+		return this.options;
+	}
 	protected Option getOptions(String optionName) {
 		int index = -1;
 		for(int i=0; i<this.options.size(); i++) {
@@ -93,7 +96,7 @@ public class OptionSet implements Serializable {
 	 * @param name - the name of the option
 	 * @param price - the price of the option
 	 */
-	protected void setOption(String name, int price) {
+	protected void setOption(String name, Float price) {
 		boolean found = false;
 		int index = -1;
 	
@@ -127,12 +130,12 @@ public class OptionSet implements Serializable {
 	 * @param name
 	 * @return
 	 */
-	protected int getOptionPrice(String name) {
+	protected Float getOptionPrice(String name) {
 		int index = findOption(name);
 		if(index != -1) {
 			return options.get(index).getPrice();
 		}
-		return -1;
+		return -1f;
 	}
 	/**
 	 * eturns the index of the Option based on the name

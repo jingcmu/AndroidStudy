@@ -1,3 +1,7 @@
+Model Name:
+FordZTW 
+Base price:
+18445
 5
 Color
 Fort Knox Gold Clearcoat Metallic
