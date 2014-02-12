@@ -1,4 +1,4 @@
-package CustomerException;
+package customerException;
 
 public class OptionFileFormatException extends Exception{
 	private static final long serialVersionUID = 111L;

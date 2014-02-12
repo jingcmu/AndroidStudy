@@ -1,8 +1,8 @@
-package Test;
+package test;
 
-import Adapter.BuildAuto;
-import Adapter.CreateAuto;
-import Adapter.UpdateAuto;
+import adapter.BuildAuto;
+import adapter.CreateAuto;
+import adapter.UpdateAuto;
 
 public class simulator {
 

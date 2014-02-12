@@ -1,4 +1,4 @@
-package CustomerException;
+package customerException;
 
 public class OptionNoElementException extends Exception{
 	private static final long serialVersionUID = 111L;

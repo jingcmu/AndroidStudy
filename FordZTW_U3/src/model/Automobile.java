@@ -1,12 +1,12 @@
-package Model;
+package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import CustomerException.OptionNoElementException;
-import CustomerException.OptionNullException;
-import CustomerException.OptionSetIndexException;
+import customerException.OptionNoElementException;
+import customerException.OptionNullException;
+import customerException.OptionSetIndexException;
 
 public class Automobile implements Serializable {
 	private static final long serialVersionUID = 1L;	
@@ -263,13 +263,12 @@ public class Automobile implements Serializable {
 	/**
 	 * 
 	 */
-	public Float getOptionChoicePrice(String setName) {
-		String optionName = null;
+	public Float getOptionChoicePrice(String setName, String optionName) {
 		OptionSet.Option option = null;
-		if(this.Choices.containsKey(setName)) {
-			optionName = this.Choices.get(setName);
+		
+		if(optionName != null)
 			option = this.findOptionSet(setName).getOption(optionName);
-		}
+		
 		if(option != null)
 			return option.getPrice();
 		else
@@ -279,7 +278,7 @@ public class Automobile implements Serializable {
 	public Float getTotalPrice() {
 		Float price = (Float)(float)this.basePrice;
 		for(int i=0; i<this.getoptionSetSize(); i++) {
-			price += getOptionChoicePrice(getOptionChoice(this.getOptionSet(i).getName()));
+			price += getOptionChoicePrice(this.getOptionSet(i).getName(), getOptionChoice(this.getOptionSet(i).getName()));
 		}
 		return price;
 	}

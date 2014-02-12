@@ -1,8 +1,8 @@
-package Adapter;
+package adapter;
 import java.util.LinkedHashMap;
-import Util.Util;
 
-import Model.*;
+import model.*;
+import util.Util;
 public abstract class proxyAutomobile {
 	private static LinkedHashMap<String, Automobile> models;
 	/**
@@ -27,6 +27,7 @@ public abstract class proxyAutomobile {
 	public void updateOptionSetName(String Modelname, String OptionSetname, String newName){
 		Automobile auto = models.get(Modelname);
 		auto.setOptionSet(OptionSetname, newName);
+		
 	}
 	public void updateOptionPrice(String Modelname, String OptionSetname, String Option, float newprice){
 		Automobile auto = models.get(Modelname);

@@ -1,4 +1,4 @@
-package CustomerException;
+package customerException;
 
 public class OptionNullException extends Exception{
 	private static final long serialVersionUID = 112L;

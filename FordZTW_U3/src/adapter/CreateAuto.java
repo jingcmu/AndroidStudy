@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Adapter;
+package adapter;
 
 /**
  * @author Jacky

@@ -1,10 +1,10 @@
-package Util;
+package util;
 
 import java.io.*;
 
-import CustomerException.OptionFileFormatException;
-import CustomerException.OptionPriceException;
-import Model.Automobile;
+import customerException.OptionFileFormatException;
+import customerException.OptionPriceException;
+import model.Automobile;
 
 public class Util {
 	public Automobile buildAutoObject(String filename){
