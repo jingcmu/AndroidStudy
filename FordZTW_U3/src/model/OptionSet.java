@@ -64,7 +64,7 @@ public class OptionSet implements Serializable {
 	
 	/**
 	 * getter and setter of OptionSet
-	 * @return
+	 * 
 	 */
 	protected String getName() {
 		return name;
@@ -82,24 +82,15 @@ public class OptionSet implements Serializable {
 	protected ArrayList<Option> getOptions() {
 		return this.options;
 	}
-	protected Option getOptions(String optionName) {
-		int index = -1;
-		for(int i=0; i<this.options.size(); i++) {
-			if(this.options.get(i).getName().equals(name)) {
-				index = i;
-				break;
-			}
-		}
-		return index == -1? null:options.get(index);
-	}
+	
 	protected void setOptions(Integer index, Option options) {
 		this.options.set(index, options);
 	}
 	/**
 	 * sets the ith Option to the specified name and price
-	 * @param i - the ith option
-	 * @param name - the name of the option
-	 * @param price - the price of the option
+	 * @param i : the ith option
+	 * @param name : the name of the option
+	 * @param price : the price of the option
 	 */
 	protected void setOption(String name, Float price) {
 		boolean found = false;
@@ -130,6 +121,11 @@ public class OptionSet implements Serializable {
 		return null;
 	}
 	
+	/**
+	 * get option by its name
+	 * @param name : option name
+	 * @return option
+	 */
 	protected Option getOption(String name) {
 		int index = findOption(name);
 		if(index != -1) {
@@ -140,7 +136,7 @@ public class OptionSet implements Serializable {
 	/**
 	 * eturns the price of the Option based on the name
 	 * @param name
-	 * @return
+	 * @return price of the option
 	 */
 	protected Float getOptionPrice(String name) {
 		int index = findOption(name);
@@ -152,7 +148,7 @@ public class OptionSet implements Serializable {
 	/**
 	 * eturns the index of the Option based on the name
 	 * @param name
-	 * @return
+	 * @return index of the option
 	 */
 	protected int findOption(String name) {
 		for(int i=0; i<options.size(); i++) {
@@ -162,6 +158,10 @@ public class OptionSet implements Serializable {
 		return -1;
 	}
 	
+	/**
+	 * print info of options in an optionset
+	 * @return info string of the optionset
+	 */
 	protected String print() {
 		String str = "";
 		for(int i=0; i<this.getOptionSize(); i++) {

@@ -1,5 +1,9 @@
 package customerException;
-
+/**
+ * deal with Set Index error
+ * @author Jacky
+ *
+ */
 public class OptionSetIndexException extends Exception{
 	private static final long serialVersionUID = 111L;
 	public OptionSetIndexException() {

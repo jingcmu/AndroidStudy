@@ -7,7 +7,14 @@ public class EditOptions extends Thread{
 	private String OptionName;
 	private String newName;
 	private float newprice;
-
+	
+	/**
+	 * To edit the price of an option
+	 * @param Model : name of model
+	 * @param OptionsetName : name of optionset
+	 * @param OptionName : name of option
+	 * @param newprice : new price of an option
+	 */
 	protected EditOptions(Automobile Model, String OptionsetName, String OptionName, float newprice) {
 		this.Model = Model;
 		this.OptionsetName = OptionsetName;
@@ -16,12 +23,21 @@ public class EditOptions extends Thread{
 		this.newName = null;
 	}
 	
+	/**
+	 * To edit the name of an option set
+	 * @param Model : model name
+	 * @param OptionsetName : old name of an optionset
+	 * @param newName : new name of an optionset
+	 */
 	protected EditOptions(Automobile Model, String OptionsetName, String newName) {
 		this.Model = Model;
 		this.OptionsetName = OptionsetName;
 		this.newName = newName;
 	}
 	
+	/**
+	 * To edit option in a seperated thread
+	 */
 	public void run() {
         synchronized(Model) {
         	for(int i=0; i<6; i++) {

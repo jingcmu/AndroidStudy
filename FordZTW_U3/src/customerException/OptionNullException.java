@@ -1,5 +1,9 @@
 package customerException;
-
+/**
+ * deal with Null exception
+ * @author Jacky
+ *
+ */
 public class OptionNullException extends Exception{
 	private static final long serialVersionUID = 112L;
 	public OptionNullException() {
