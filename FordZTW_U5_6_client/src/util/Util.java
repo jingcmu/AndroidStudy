@@ -3,8 +3,7 @@ package util;
 import java.io.*;
 import java.util.Properties;
 
-import customerException.OptionFileFormatException;
-import customerException.OptionPriceException;
+import customerException.OptionException;
 import model.Automobile;
 
 public class Util {
@@ -17,7 +16,7 @@ public class Util {
         //Open the file using FileReader Object.
         try {
         	if(!filename.contains(".txt")) {
-        		throw new OptionFileFormatException();
+        		throw new OptionException(0);
         	}
         	File optionFile = new File(filename);
     		//In a loop read a line using readLine method.
@@ -50,7 +49,7 @@ public class Util {
             			String price = s.substring(index+1, s.length());
             			int priceInt = Integer.parseInt(price);
             			if(priceInt > auto.getBasePrice() || priceInt < 0-auto.getBasePrice()) {
-            				throw new OptionPriceException();
+            				throw new OptionException(3);
             			}
             			auto.setOption(optionSetName, optionName, priceInt);
             		}
@@ -60,11 +59,8 @@ public class Util {
             }
             fr.close();
         }
-        catch (OptionFileFormatException e) {
-        	e.printFileFormatError();
-        }
-        catch (OptionPriceException e) {
-        	e.printPriceError();
+        catch (OptionException e) {
+        	e.printError();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -81,7 +77,6 @@ public class Util {
 			in = new FileInputStream(filename);
 			props.load(in);
 		}  catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} //This loads the entire file in memory.
 		String CarMake = props.getProperty("CarMake"); //this is how you read a

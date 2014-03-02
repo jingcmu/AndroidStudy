@@ -4,8 +4,7 @@ a.  What you were asked to change
 b.  How many points were taken off.
 	2 points
 c.  What changes you made in what files
-	
-d.  Show test cases for changes made (if applicable)
-	
-e.  How many points should be added back in your opinons
+	in package model Automobile.java, added synchronized to all methods need to be synchronized
+d.  How many points should be added back in your opinons
 	2 points
+

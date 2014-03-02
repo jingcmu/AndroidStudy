@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Properties;
 
-import customerException.OptionFileFormatException;
+import customerException.OptionException;
 import model.*;
 import scale.EditOptions;
 import util.Util;
@@ -47,11 +47,11 @@ public abstract class proxyAutomobile {
 				}
 			}
 			else {
-				throw new OptionFileFormatException();
+				throw new OptionException(0);
 			}
 		}
-		catch (OptionFileFormatException e) {
-        	e.printFileFormatError();
+		catch (OptionException e) {
+        	e.printError();
         }
 	}
 	

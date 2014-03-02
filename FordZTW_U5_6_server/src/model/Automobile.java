@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import customerException.OptionNoElementException;
-import customerException.OptionNullException;
-import customerException.OptionSetIndexException;
+import customerException.OptionException;
 
 public class Automobile implements Serializable {
 	private static final long serialVersionUID = 1L;	
@@ -69,10 +67,10 @@ public class Automobile implements Serializable {
 	public synchronized OptionSet getOptionSet(int index) {
 		try {
 			if(index >= optionSetSize) {
-				throw new OptionSetIndexException();
+				throw new OptionException(0);
 			}
-		} catch(OptionSetIndexException e) {
-			e.printSetIndexError();
+		} catch(OptionException e) {
+			e.printError();
 			index = this.optionSet.size() - 1;
 		}
 		return optionSet.get(index);
@@ -215,13 +213,13 @@ public class Automobile implements Serializable {
 	public synchronized void updateOptionSet(OptionSet optionset, int index) {
 		try {
 			if(index >= optionSetSize) {
-				throw new OptionSetIndexException();
+				throw new OptionException(4);
 			}
 			else {
 				this.optionSet.set(index, optionset);
 			}
-		} catch(OptionSetIndexException e) {
-			e.printSetIndexError();
+		} catch(OptionException e) {
+			e.printError();
 		}
 	}
 		
@@ -235,15 +233,15 @@ public class Automobile implements Serializable {
 		OptionSet.Option optionT;
 		try {
 			if(optionSetIndex >= optionSetSize) {
-				throw new OptionSetIndexException();
+				throw new OptionException(4);
 			}
 			else {
 				optionset = this.optionSet.get(optionSetIndex);
 				optionT = optionset.getOption(option.getName());
 				optionset.setOption(optionT.getName(), optionT.getPrice());
 			}
-		} catch(OptionSetIndexException e) {
-			e.printSetIndexError();
+		} catch(OptionException e) {
+			e.printError();
 		}
 	}
 	
@@ -311,9 +309,9 @@ public class Automobile implements Serializable {
 		}
 		else {
 			try{
-				throw new OptionNoElementException();
-			} catch(OptionNoElementException e) {
-				e.printNoElementError();
+				throw new OptionException(1);
+			} catch(OptionException e) {
+				e.printError();
 			}
 		}
 	}
@@ -330,9 +328,9 @@ public class Automobile implements Serializable {
 		}
 		else {
 			try {
-				throw new OptionNullException();
-			} catch(OptionNullException e) {
-				e.printNullError();
+				throw new OptionException(2);
+			} catch(OptionException e) {
+				e.printError();
 			}
 		}
 		return optionName;
