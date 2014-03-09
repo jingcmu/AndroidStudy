@@ -4,6 +4,7 @@ import java.net.*;
 import java.util.Properties;
 import java.io.*;
 
+import model.Automobile;
 import adapter.BuildAuto;
 
 public class DefaultSocketClient extends Thread 
@@ -77,22 +78,21 @@ public class DefaultSocketClient extends Thread
 								new BufferedInputStream(socket.getInputStream()));
 						props = (Properties)in.readObject();
 						BCMO.parseCarModelOptions(props);
-						out.println("Build model success!");
+						BuildAuto autos = new BuildAuto();
+						out.println(autos.getAllAutos());
 					}
 					else if(messageFromClient.equals("f")) {
 						BuildAuto autos = new BuildAuto();
 						out.println(autos.getAllAutos());
 					} 
 					else if(messageFromClient.equals("c")) {
+						String modelName = br.readLine();
 						BuildAuto autos = new BuildAuto();
-						out.println(autos.getAllAutos());
-						String modelChosen = br.readLine();
-						String modelInfor = autos.modelToString(modelChosen);
-						out.println(modelInfor);
-						if(modelInfor.equals("No such Model!")) {
-							continue;
-						}						
-						out.println(autos.listOptionSet(modelChosen));
+						Automobile auto = autos.getAuto(modelName);
+						ObjectOutputStream objectOutputStream = new ObjectOutputStream(
+    	        				new BufferedOutputStream(socket.getOutputStream()));
+						objectOutputStream.writeObject(auto);
+						objectOutputStream.flush();
 					}
 				}
 			}

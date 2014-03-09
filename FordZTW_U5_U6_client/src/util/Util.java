@@ -69,8 +69,16 @@ public class Util {
         return auto;
 	}
 	
-	public Automobile buildAutoObjectFromPropertiesFile(Properties props){
+	public Automobile buildAutoObjectFromPropertiesFile(String filename){
 		Automobile auto = new Automobile();
+		Properties props= new Properties();
+		FileInputStream in;
+		try {
+			in = new FileInputStream(filename);
+			props.load(in);
+		}  catch (IOException e) {
+			e.printStackTrace();
+		} 
 		String CarMake = props.getProperty("CarMake"); //this is how you read a
 		//property. It is like gettting a value from HashTable.
 		Integer setNum = 0;

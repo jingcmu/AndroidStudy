@@ -303,7 +303,7 @@ public class Automobile implements Serializable {
 	 * @param optionName : name of the option
 	 */
 
-	public synchronized void setOptionChoice(String setName, String optionName) {
+	public  void setOptionChoice(String setName, String optionName) {
 		if(this.Choices.containsKey(setName)) {
 			this.Choices.put(setName, optionName);
 		}
@@ -321,7 +321,7 @@ public class Automobile implements Serializable {
 	 * @param setName : name of option set
 	 * @return option name
 	 */
-	public synchronized String getOptionChoice(String setName) {
+	public String getOptionChoice(String setName) {
 		String optionName = null;
 		if(this.Choices.containsKey(setName)) {
 			optionName = this.Choices.get(setName);
@@ -342,11 +342,11 @@ public class Automobile implements Serializable {
 	 * @param optionName : name of the option
 	 * @return price of the option
 	 */
-	public synchronized Float getOptionChoicePrice(String setName, String optionName) {
+	public Float getOptionChoicePrice(String setName, String optionName) {
 		OptionSet.Option option = null;
 		
-		if(optionName != null)
-			option = this.findOptionSet(setName).getOption(optionName);
+		OptionSet oset = findOptionSet(setName);
+		option = oset.getOption(optionName);
 		
 		if(option != null)
 			return option.getPrice();
@@ -372,7 +372,7 @@ public class Automobile implements Serializable {
 			auto.setOption(OptionSetName, OptionName, 0);
 		} else {
 			int index = OptionName.indexOf("$");            			
-			String optionName = OptionName.substring(0, index-1);
+			String optionName = OptionName.substring(0, index);
 			String price = OptionName.substring(index+1, OptionName.length());
 			int priceInt = Integer.parseInt(price);
 			auto.setOption(OptionSetName, optionName, priceInt);

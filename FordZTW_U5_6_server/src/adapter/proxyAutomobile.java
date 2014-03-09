@@ -85,6 +85,15 @@ public abstract class proxyAutomobile {
 		return models.get(Modelname).listOptionSet();
 	}
 	
+	public Automobile getAuto(String modelName) {
+		if(models.containsKey(modelName)) {
+			return models.get(modelName);
+		}
+		else {
+			return null;
+		}
+	}
+	
 	public String modelToString(String Modelname) {
 		if(models.containsKey(Modelname)) {
 			return models.get(Modelname).toString();
